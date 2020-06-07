@@ -1,4 +1,4 @@
-package br.com.afcl.desingpattern.main.behaviors.quack;
+package br.com.afcl.desingpattern.main.chapter1.behaviors.quack;
 
 public class Quack implements QuackBehavior{
 

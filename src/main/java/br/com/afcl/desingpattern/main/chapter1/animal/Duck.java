@@ -1,7 +1,7 @@
-package br.com.afcl.desingpattern.main.animal;
+package br.com.afcl.desingpattern.main.chapter1.animal;
 
-import br.com.afcl.desingpattern.main.behaviors.fly.FlyBehavior;
-import br.com.afcl.desingpattern.main.behaviors.quack.QuackBehavior;
+import br.com.afcl.desingpattern.main.chapter1.behaviors.fly.FlyBehavior;
+import br.com.afcl.desingpattern.main.chapter1.behaviors.quack.QuackBehavior;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 

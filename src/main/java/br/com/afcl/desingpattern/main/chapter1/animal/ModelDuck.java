@@ -1,7 +1,7 @@
-package br.com.afcl.desingpattern.main.animal;
+package br.com.afcl.desingpattern.main.chapter1.animal;
 
-import br.com.afcl.desingpattern.main.behaviors.fly.FlyNoWay;
-import br.com.afcl.desingpattern.main.behaviors.quack.Quack;
+import br.com.afcl.desingpattern.main.chapter1.behaviors.fly.FlyNoWay;
+import br.com.afcl.desingpattern.main.chapter1.behaviors.quack.Quack;
 
 public class ModelDuck extends Duck {
 

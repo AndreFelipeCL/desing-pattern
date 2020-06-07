@@ -1,9 +1,9 @@
-package br.com.afcl.desingpattern.main;
+package br.com.afcl.desingpattern.main.chapter1;
 
-import br.com.afcl.desingpattern.main.animal.Duck;
-import br.com.afcl.desingpattern.main.animal.MallardDuck;
-import br.com.afcl.desingpattern.main.animal.ModelDuck;
-import br.com.afcl.desingpattern.main.behaviors.fly.FlyWithRocketPowered;
+import br.com.afcl.desingpattern.main.chapter1.animal.Duck;
+import br.com.afcl.desingpattern.main.chapter1.animal.MallardDuck;
+import br.com.afcl.desingpattern.main.chapter1.animal.ModelDuck;
+import br.com.afcl.desingpattern.main.chapter1.behaviors.fly.FlyWithRocketPowered;
 
 public class MiniDucksSimulator {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package br.com.afcl.desingpattern.main.behaviors.fly;
+package br.com.afcl.desingpattern.main.chapter1.behaviors.fly;
 
 public class FlyWithWings implements FlyBehavior{
     @Override
