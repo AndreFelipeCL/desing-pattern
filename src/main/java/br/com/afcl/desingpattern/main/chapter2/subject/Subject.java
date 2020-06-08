@@ -4,8 +4,6 @@ import br.com.afcl.desingpattern.main.chapter2.observer.Observer;
 
 public interface Subject {
     public void registerObserver(final Observer observer);
-
     public void removeObservable(final Observer observer);
-
     public void notifyObservers();
 }

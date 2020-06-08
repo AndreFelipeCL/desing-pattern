@@ -7,38 +7,32 @@ import java.util.List;
 
 public class WeatherData implements Subject {
 
-    private List<Observer> observerList;
-    private float temperature;
-    private float humidity;
-    private float pressure;
+	private final List<Observer> observerList;
+	private float temperature;
+	private float humidity;
+	private float pressure;
 
-    public WeatherData() {
-        this.observerList = new ArrayList<>();
-    }
+	public WeatherData() {
+		this.observerList = new ArrayList<>();
+	}
 
-    @Override
-    public void registerObserver(Observer observer) {
-        this.observerList.add(observer);
-    }
+	@Override public void registerObserver(Observer observer) {
+		this.observerList.add(observer);
+	}
 
-    @Override
-    public void removeObservable(Observer observer) {
-        this.observerList.remove(observer);
-    }
+	@Override public void removeObservable(Observer observer) {
+		this.observerList.remove(observer);
+	}
 
-    @Override
-    public void notifyObservers() {
-        observerList.stream().forEach(observer -> observer.update(temperature, humidity, pressure));
-    }
+	@Override public void notifyObservers() {
+		observerList.forEach(observer -> observer.update(temperature, humidity, pressure));
+		System.out.println();
+	}
 
-    public void measurementsChanged() {
-        notifyObservers();
-    }
-
-    public void setMeasurements(final float temperature, final float humidity, final float pressure) {
-        this.temperature = temperature;
-        this.humidity = humidity;
-        this.pressure = pressure;
-        measurementsChanged();
-    }
+	public void setMeasurements(final float temperature, final float humidity, final float pressure) {
+		this.temperature = temperature;
+		this.humidity = humidity;
+		this.pressure = pressure;
+		notifyObservers();
+	}
 }
