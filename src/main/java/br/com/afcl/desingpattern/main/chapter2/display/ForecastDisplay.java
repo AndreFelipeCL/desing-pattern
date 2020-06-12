@@ -1,22 +1,28 @@
 package br.com.afcl.desingpattern.main.chapter2.display;
 
-import br.com.afcl.desingpattern.main.chapter2.observer.Observer;
 import br.com.afcl.desingpattern.main.chapter2.subject.WeatherData;
+
+import java.util.Observable;
+import java.util.Observer;
 
 public class ForecastDisplay implements Observer, DisplayElement {
     private float currentPressure = 29.92f;
     private float lastPressure;
-    private WeatherData weatherData;
+    private Observable weatherData;
 
-    public ForecastDisplay(WeatherData weatherData) {
-        this.weatherData = weatherData;
-        weatherData.registerObserver(this);
+    public ForecastDisplay(Observable observable) {
+        this.weatherData = observable;
+        weatherData.addObserver(this);
     }
 
-    public void update(float temp, float humidity, float pressure) {
-        lastPressure = currentPressure;
-        currentPressure = pressure;
-        display();
+    @Override
+    public void update(Observable observable, Object o) {
+        if (observable instanceof WeatherData) {
+            WeatherData weatherData = (WeatherData) observable;
+            this.lastPressure = this.currentPressure;
+            this.currentPressure = weatherData.getPressure();
+            display();
+        }
     }
 
     public void display() {

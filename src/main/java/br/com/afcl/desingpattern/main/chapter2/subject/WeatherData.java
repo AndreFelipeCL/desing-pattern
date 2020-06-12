@@ -1,44 +1,24 @@
 package br.com.afcl.desingpattern.main.chapter2.subject;
 
-import br.com.afcl.desingpattern.main.chapter2.observer.Observer;
+import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Observable;
 
-public class WeatherData implements Subject {
+public class WeatherData extends Observable {
 
-    private List<Observer> observerList;
-    private float temperature;
-    private float humidity;
-    private float pressure;
-
-    public WeatherData() {
-        this.observerList = new ArrayList<>();
-    }
-
-    @Override
-    public void registerObserver(Observer observer) {
-        this.observerList.add(observer);
-    }
-
-    @Override
-    public void removeObservable(Observer observer) {
-        this.observerList.remove(observer);
-    }
-
-    @Override
-    public void notifyObservers() {
-        observerList.stream().forEach(observer -> observer.update(temperature, humidity, pressure));
-    }
-
-    public void measurementsChanged() {
-        notifyObservers();
-    }
+    @Getter private float temperature;
+    @Getter private float humidity;
+    @Getter private float pressure;
 
     public void setMeasurements(final float temperature, final float humidity, final float pressure) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
         measurementsChanged();
+    }
+
+    public void measurementsChanged() {
+        setChanged();
+        notifyObservers();
     }
 }

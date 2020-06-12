@@ -1,20 +1,26 @@
 package br.com.afcl.desingpattern.main.chapter2.display;
 
-import br.com.afcl.desingpattern.main.chapter2.observer.Observer;
 import br.com.afcl.desingpattern.main.chapter2.subject.WeatherData;
+
+import java.util.Observable;
+import java.util.Observer;
 
 public class HeatIndexDisplay implements Observer, DisplayElement {
     float heatIndex = 0.0f;
-    private WeatherData weatherData;
+    private Observable weatherData;
 
-    public HeatIndexDisplay(WeatherData weatherData) {
-        this.weatherData = weatherData;
-        weatherData.registerObserver(this);
+    public HeatIndexDisplay(Observable observable) {
+        this.weatherData = observable;
+        weatherData.addObserver(this);
     }
 
-    public void update(float t, float rh, float pressure) {
-        heatIndex = computeHeatIndex(t, rh);
-        display();
+    @Override
+    public void update(Observable observable, Object o) {
+        if (observable instanceof WeatherData) {
+            WeatherData weatherData = (WeatherData) observable;
+            heatIndex = computeHeatIndex(weatherData.getTemperature(), weatherData.getHumidity());
+            display();
+        }
     }
 
     private float computeHeatIndex(float t, float rh) {

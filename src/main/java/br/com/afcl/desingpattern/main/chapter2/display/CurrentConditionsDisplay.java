@@ -1,28 +1,33 @@
 package br.com.afcl.desingpattern.main.chapter2.display;
 
-import br.com.afcl.desingpattern.main.chapter2.observer.Observer;
-import br.com.afcl.desingpattern.main.chapter2.subject.Subject;
+import br.com.afcl.desingpattern.main.chapter2.subject.WeatherData;
+
+import java.util.Observable;
+import java.util.Observer;
 
 public class CurrentConditionsDisplay implements DisplayElement, Observer {
 
     private float temperature;
     private float humidity;
-    private Subject weatherData;
+    private Observable weatherData;
 
-    public CurrentConditionsDisplay(final Subject weatherData) {
-        this.weatherData = weatherData;
-        this.weatherData.registerObserver(this);
+    public CurrentConditionsDisplay(final Observable observable) {
+        this.weatherData = observable;
+        this.weatherData.addObserver(this);
+    }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        if (observable instanceof WeatherData) {
+            WeatherData weatherData = (WeatherData) observable;
+            this.temperature = weatherData.getTemperature();
+            this.humidity = weatherData.getHumidity();
+            display();
+        }
     }
 
     @Override
     public void display() {
         System.out.println("Current conditions: " + temperature + "°F degrees and " + humidity + "% humidity.");
-    }
-
-    @Override
-    public void update(final float temperature, final float humidity, final float pressure) {
-        this.temperature = temperature;
-        this.humidity = humidity;
-        display();
     }
 }
