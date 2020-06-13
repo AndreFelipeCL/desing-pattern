@@ -2,9 +2,9 @@ package br.com.afcl.desingpattern.main.chapter3.beverage;
 
 import java.math.BigDecimal;
 
-public class DecafBeverage extends Beverage {
+public class Decaf extends Beverage {
 
-    public DecafBeverage() {
+    public Decaf() {
         this.description = "Decaf Coffee";
     }
 

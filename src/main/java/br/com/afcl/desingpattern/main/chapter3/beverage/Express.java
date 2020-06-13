@@ -2,10 +2,10 @@ package br.com.afcl.desingpattern.main.chapter3.beverage;
 
 import java.math.BigDecimal;
 
-public class ExpressBeverage extends Beverage {
+public class Express extends Beverage {
 
-    public ExpressBeverage() {
-        this.description = "Café Espresso";
+    public Express() {
+        this.description = "Express Coffee";
     }
 
     @Override
